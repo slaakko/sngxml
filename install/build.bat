@@ -1,2 +1,4 @@
 @echo off
-spg -v ../sxml/xml/XmlParser.spg
+spg -v ../sngxml/xml/XmlParser.spg
+slg -vn ../sngxml/xpath/XPathLexer.lexer
+spg -v ../sngxml/xpath/XPathParser.spg

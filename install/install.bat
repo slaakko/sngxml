@@ -1,11 +1,11 @@
 @echo off
-xcopy /Y /D ..\sxml\x64\Debug\sxmldomd.dll ..\bin
-xcopy /Y /D ..\sxml\x64\Debug\sxmlxmld.dll ..\bin
-xcopy /Y /D ..\sxml\x64\Debug\xmltesterd.exe ..\bin
-xcopy /Y /D ..\sxml\x64\Debug\sxmldomd.lib ..\lib
-xcopy /Y /D ..\sxml\x64\Debug\sxmlxmld.lib ..\lib
-xcopy /Y /D ..\sxml\x64\Release\sxmldom.dll ..\bin
-xcopy /Y /D ..\sxml\x64\Release\sxmlxml.dll ..\bin
-xcopy /Y /D ..\sxml\x64\Release\xmltester.exe ..\bin
-xcopy /Y /D ..\sxml\x64\Release\sxmldom.lib ..\lib
-xcopy /Y /D ..\sxml\x64\Release\sxmlxml.lib ..\lib
+xcopy /Y /D ..\sngxml\x64\Debug\sngxmldomd.dll ..\bin
+xcopy /Y /D ..\sngxml\x64\Debug\sngxmlxmld.dll ..\bin
+xcopy /Y /D ..\sngxml\x64\Debug\xmltesterd.exe ..\bin
+xcopy /Y /D ..\sngxml\x64\Debug\sngxmldomd.lib ..\lib
+xcopy /Y /D ..\sngxml\x64\Debug\sngxmlxmld.lib ..\lib
+xcopy /Y /D ..\sngxml\x64\Release\sngxmldom.dll ..\bin
+xcopy /Y /D ..\sngxml\x64\Release\sngxmlxml.dll ..\bin
+xcopy /Y /D ..\sngxml\x64\Release\xmltester.exe ..\bin
+xcopy /Y /D ..\sngxml\x64\Release\sngxmldom.lib ..\lib
+xcopy /Y /D ..\sngxml\x64\Release\sngxmlxml.lib ..\lib
