@@ -126,7 +126,7 @@ parser XPathParser
 
     PathExpr(var std::unique_ptr<sngxml::xpath::XPathExpr> expr, var sngxml::xpath::Operator op) : sngxml::xpath::XPathExpr*
         ::= (LocationPath:locationPath - FunctionCall:functionCall){ return locationPath; }
-        |   FilterExpr:filterExpr{ expr.reset(filterExpr); } ((SLASHSLASH{ op = sngxml::xpath::Operator::slashSlash; } | SLASH{ op = sngxml::xpath::Operator::slash; }) RelativeLocationPath:right
+        |   (FilterExpr:filterExpr{ expr.reset(filterExpr); } ((SLASHSLASH{ op = sngxml::xpath::Operator::slashSlash; } | SLASH{ op = sngxml::xpath::Operator::slash; }) RelativeLocationPath:right
             {
                 switch (op)
                 {
@@ -142,6 +142,10 @@ parser XPathParser
                 }
             }
             )?
+        )
+        {
+            return expr.release();
+        }
         ;
 
     FilterExpr(var std::unique_ptr<sngxml::xpath::XPathExpr> expr) : sngxml::xpath::XPathExpr*

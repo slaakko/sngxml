@@ -5,11 +5,12 @@
 
 #ifndef SNGXML_XPATH_INIT_DONE
 #define SNGXML_XPATH_INIT_DONE
+#include <sngxml/xpath/XPathApi.hpp>
 
 namespace sngxml { namespace xpath {
 
-void Init();
-void Done();
+SNGXML_XPATH_API void Init();
+SNGXML_XPATH_API void Done();
 
 } } // namespace sngxml::xpath
 

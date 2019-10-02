@@ -188,15 +188,30 @@ void DomDocumentHandler::SkippedEntity(const std::u32string& entityName)
 
 std::unique_ptr<Document> ParseDocument(const std::u32string& content, const std::string& systemId)
 {
+    return ParseDocument(content, systemId, Flags::none);
+}
+
+std::unique_ptr<Document> ParseDocument(const std::u32string& content, const std::string& systemId, Flags flags)
+{
     DomDocumentHandler domDocumentHandler;
-    ParseXmlContent(content, systemId, &domDocumentHandler);
+    sngxml::xml::Flags xmlFlags = sngxml::xml::Flags::none;
+    if ((flags & Flags::debug) != Flags::none)
+    {
+        xmlFlags = xmlFlags | sngxml::xml::Flags::debug;
+    }
+    ParseXmlContent(content, systemId, &domDocumentHandler, xmlFlags);
     return domDocumentHandler.GetDocument();
 }
 
 std::unique_ptr<Document> ReadDocument(const std::string& fileName)
 {
+    return ReadDocument(fileName, Flags::none);
+}
+
+std::unique_ptr<Document> ReadDocument(const std::string& fileName, Flags flags)
+{
     std::u32string content = ToUtf32(ReadFile(fileName));
-    return ParseDocument(content, fileName);
+    return ParseDocument(content, fileName, flags);
 }
 
 } } // namespace sngxml::dom

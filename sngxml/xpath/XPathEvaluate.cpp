@@ -5,7 +5,8 @@
 
 #include <sngxml/xpath/XPathEvaluate.hpp>
 #include <sngxml/xpath/XPathContext.hpp>
-//#include <sngxml/xpath/XPathParser.hpp> todo
+#include <sngxml/xpath/XPathParser.hpp>
+#include <sngxml/xpath/XPathLexer.hpp>
 #include <sngxml/xpath/XPathDebug.hpp>
 #include <sngxml/dom/Document.hpp>
 #include <iostream>
@@ -15,14 +16,14 @@ namespace sngxml { namespace xpath {
 
 std::unique_ptr<XPathObject> Evaluate(const std::u32string& xpathExpression, sngxml::dom::Node* node)
 {
-    std::unique_ptr<XPathObject> dummy; // todo
-/*
+    soulng::lexer::XmlParsingLog debugLog(std::cerr);
+    std::chrono::time_point<std::chrono::steady_clock> startQuery = std::chrono::steady_clock::now();
+    XPathLexer xpathLexer(xpathExpression, "", 0);
     if (XPathDebugParsing())
     {
-        //xpathGrammar->SetLog(&std::cout); // todo
+        xpathLexer.SetLog(&debugLog);
     }
-    std::chrono::time_point<std::chrono::steady_clock> startQuery = std::chrono::steady_clock::now();
-    std::unique_ptr<XPathExpr> xpathExpr(xpathGrammar->Parse(&xpathExpression[0], &xpathExpression[0] + xpathExpression.length(), 0, "")); 
+    std::unique_ptr<XPathExpr> xpathExpr(XPathParser::Parse(xpathLexer));
     std::chrono::time_point<std::chrono::steady_clock> endQuery = std::chrono::steady_clock::now();
     if (XPathDebugQuery())
     {
@@ -39,8 +40,6 @@ std::unique_ptr<XPathObject> Evaluate(const std::u32string& xpathExpression, sng
         SetXPathExecuteDuration(endEvaluate - startEvaluate);
     }
     return result;
-    */
-    return dummy;
 }
 
 std::unique_ptr<XPathObject> Evaluate(const std::u32string& xpathExpression, sngxml::dom::Document* document)
